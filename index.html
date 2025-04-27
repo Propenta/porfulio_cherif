@@ -751,7 +751,6 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -764,10 +763,53 @@
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  
   <script src="js/main.js"></script>
-    
-  </body>
+  
+  <!-- Additional script to fix menu behavior -->
+  <script>
+	$(document).ready(function() {
+	  // Fix for menu collapse on mobile
+	  $('.navbar-nav .nav-item a').click(function() {
+		if ($('.navbar-toggler').is(':visible')) {
+		  $('.navbar-toggler').click();
+		}
+	  });
+	  
+	  // Improved smooth scrolling
+	  $('a.nav-link, a.btn').on('click', function(event) {
+		if (this.hash !== "") {
+		  event.preventDefault();
+		  var hash = this.hash;
+		  
+		  $('html, body').animate({
+			scrollTop: $(hash).offset().top - 70 // Adjusted offset
+		  }, 800, function() {
+			// Add hash to URL after scroll (optional)
+			window.location.hash = hash;
+		  });
+		}
+	  });
+	  
+	  // Fix possible scrolling issues
+	  $(window).on('load', function() {
+		setTimeout(function() {
+		  if (window.location.hash) {
+			var hash = window.location.hash;
+			$('html, body').animate({
+			  scrollTop: $(hash).offset().top - 70
+			}, 800);
+		  }
+		}, 300);
+	  });
+	  
+	  // Fix for iOS devices
+	  if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+		$('.slider-item').css('height', $(window).height());
+		$(window).resize(function() {
+		  $('.slider-item').css('height', $(window).height());
+		});
+	  }
+	});
+  </script>
+</body>
 </html>
-
-

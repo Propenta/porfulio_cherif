@@ -76,6 +76,151 @@ p {
   margin-top: 0;
   margin-bottom: 1rem; }
 
+
+/* Responsive fixes for mobile devices */
+@media (max-width: 767.98px) {
+  /* Navigation fixes */
+  .ftco-navbar-light {
+    background: rgba(0,0,0,0.9) !important;
+    position: fixed !important;
+    width: 100% !important;
+    z-index: 1030;
+  }
+  
+  .ftco-navbar-light .navbar-brand {
+    color: #fff;
+  }
+  
+  .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
+    padding: 10px 15px !important;
+  }
+  
+  /* Hero section fixes */
+  .hero {
+    height: auto !important;
+  }
+  
+  .slider-item {
+    height: auto !important;
+    padding: 5em 0;
+  }
+  
+  .slider-item .overlay {
+    opacity: 0.8;
+  }
+  
+  .slider-item .one-third.img {
+    height: 300px !important;
+    position: relative !important;
+    top: 0 !important;
+    order: 1 !important;
+  }
+  
+  .slider-item .one-forth {
+    width: 100% !important;
+    padding: 2em 1em !important;
+    order: 2 !important;
+    text-align: center;
+  }
+  
+  /* About section fixes */
+  #about-section .img {
+    height: 350px !important;
+  }
+  
+  .img-about img {
+    max-width: 100%;
+    height: auto !important;
+  }
+  
+  /* Services section fixes */
+  .services-1 {
+    margin-bottom: 20px;
+  }
+  
+  /* Skills section fixes */
+  .progress-wrap {
+    margin-bottom: 20px;
+  }
+  
+  .progress-wrap h3 {
+    font-size: 14px !important;
+  }
+  
+  /* Blog section fixes */
+  .blog-entry {
+    margin-bottom: 30px;
+  }
+  
+  .blog-entry .text {
+    width: 100% !important;
+  }
+  
+  .block-20 {
+    height: 200px;
+  }
+  
+  /* Contact section fixes */
+  .contact-section .box {
+    margin-bottom: 15px;
+  }
+  
+  .contact-form {
+    padding: 1.5em !important;
+  }
+  
+  /* Footer fixes */
+  .ftco-footer {
+    text-align: center;
+    padding: 3em 0 !important;
+  }
+  
+  .ftco-footer-widget {
+    margin-bottom: 30px;
+  }
+  
+  /* General improvements */
+  body {
+    overflow-x: hidden;
+  }
+  
+  .ftco-section {
+    padding: 4em 0 !important;
+  }
+  
+  h1.big {
+    font-size: 60px !important;
+  }
+}
+
+/* Tablet responsive fixes */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .ftco-navbar-light {
+    background: rgba(0,0,0,0.9) !important;
+  }
+  
+  .one-third.img {
+    height: 450px !important;
+  }
+  
+  .slider-item {
+    height: auto !important;
+    min-height: 600px;
+  }
+}
+
+/* Fix for iOS Safari viewport height issues */
+@supports (-webkit-touch-callout: none) {
+  .slider-item {
+    height: auto !important;
+    min-height: 650px;
+  }
+  
+  .hero {
+    height: auto !important;
+  }
+}
+
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;

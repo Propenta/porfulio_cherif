@@ -275,3 +275,77 @@
 
 })(jQuery);
 
+// Fix for responsive website and menu issues
+$(document).ready(function() {
+	// Fix for menu collapse on mobile - closes the menu when a link is clicked
+	$('.navbar-nav .nav-item a').click(function() {
+	  if ($('.navbar-toggler').is(':visible')) {
+		$('.navbar-toggler').click();
+	  }
+	});
+	
+	// Improved smooth scrolling with offset for fixed header
+	$('a.nav-link, a.btn').on('click', function(event) {
+	  if (this.hash !== "") {
+		event.preventDefault();
+		var hash = this.hash;
+		
+		$('html, body').animate({
+		  scrollTop: $(hash).offset().top - 70 // Adjusted offset for navbar height
+		}, 800, function() {
+		  // Add hash to URL after scroll (optional)
+		  window.location.hash = hash;
+		});
+	  }
+	});
+	
+	// Handle scrolling to anchor links on page load
+	$(window).on('load', function() {
+	  setTimeout(function() {
+		if (window.location.hash) {
+		  var hash = window.location.hash;
+		  $('html, body').animate({
+			scrollTop: $(hash).offset().top - 70
+		  }, 800);
+		}
+	  }, 300);
+	});
+	
+	// Fix for navbar background on smaller screens
+	$(window).scroll(function() {
+	  var scroll = $(window).scrollTop();
+	  
+	  if (scroll > 50) {
+		$('.ftco-navbar-light').addClass('scrolled');
+	  } else {
+		$('.ftco-navbar-light').removeClass('scrolled');
+	  }
+	});
+	
+	// Fix for iOS height issues
+	if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+	  $('.slider-item').css('height', $(window).height());
+	  $(window).resize(function() {
+		$('.slider-item').css('height', $(window).height());
+	  });
+	}
+	
+	// Fix for collapsed navbar on resize
+	$(window).resize(function() {
+	  if ($(window).width() >= 992) {
+		if (!$('#ftco-nav').hasClass('show')) {
+		  return;
+		}
+		$('.navbar-toggler').click();
+	  }
+	});
+	
+	// Animation fix for mobile devices
+	if ($(window).width() < 768) {
+	  // Adjust animation delay for mobile
+	  $('.ftco-animate').each(function() {
+		$(this).attr('data-aos-delay', '0');
+	  });
+	}
+  });
+
